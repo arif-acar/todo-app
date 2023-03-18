@@ -1,20 +1,17 @@
-const { Model } = require('sequelize');
+const Sequelize = require("sequelize");
 
-module.exports = (sequelize, DataTypes) => {
-    class ToDo extends Model {
-    }
+module.exports = (sequelize) => {
+  const ToDo = sequelize.define("todo", {
+    id: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    name: Sequelize.DataTypes.STRING,
+    description: Sequelize.DataTypes.STRING,
+    status: Sequelize.DataTypes.STRING,
+  });
 
-    ToDo.init(
-        {
-            id: DataTypes.UUID,
-            name: DataTypes.STRING,
-            description: DataTypes.STRING,
-            status: DataTypes.STRING
-        },
-        {
-            sequelize,
-            modelName: 'todo',
-        },
-    );
-    return ToDo;
+  return ToDo;
 };

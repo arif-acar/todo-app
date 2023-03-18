@@ -1,4 +1,3 @@
-const { response } = require("../app");
 const ToDoService = require("../services/ToDoService");
 
 class ToDoController {
@@ -8,19 +7,21 @@ class ToDoController {
   getTodo = async (request, response) => {
     const todo = await this.toDoService.getToDo(request.params.id);
 
-    response.status(200).send(todo);
+    response.status(todo?.statusCode ? todo.statusCode : 200).send(todo);
   };
 
   getAllTodos = async (request, response) => {
     const todoList = await this.toDoService.getAllToDos();
 
-    response.status(200).send(todoList);
+    response
+      .status(todoList?.statusCode ? todoList.statusCode : 200)
+      .send(todoList);
   };
 
   createTodo = async (request, response) => {
     const todo = await this.toDoService.createToDo(request.body);
 
-    response.status(200).send(todo);
+    response.status(todo?.statusCode ? todo.statusCode : 200).send(todo);
   };
 
   completeTodo = async (request, response) => {
@@ -29,7 +30,7 @@ class ToDoController {
       "complete"
     );
 
-    response.status(200).send(todo);
+    response.status(todo?.statusCode ? todo.statusCode : 200).send(todo);
   };
   unCompleteTodo = async (request, response) => {
     const todo = await this.toDoService.updateToDo(
@@ -37,13 +38,13 @@ class ToDoController {
       "uncomplete"
     );
 
-    response.status(200).send(todo);
+    response.status(todo?.statusCode ? todo.statusCode : 200).send(todo);
   };
 
   deleteTodo = async (request, response) => {
     const todo = await this.toDoService.deleteToDo(request.params.id);
 
-    response.status(200).send("Deleted");
+    response.status(todo?.statusCode ? todo.statusCode : 200).send("Deleted");
   };
 }
 

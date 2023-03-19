@@ -33,6 +33,9 @@ class ToDoService {
 
   createToDo = (todo) => {
     try {
+      if (!todo.status) {
+        todo.status = "uncomplete";
+      }
       return this.todoRepository.create(todo);
     } catch (e) {
       console.error(e);

@@ -11,6 +11,7 @@ module.exports = {
     password: config.DB_PASS,
     database: config.DB_NAME,
     host: config.DB_HOST,
+    port: config.DB_PORT,
     dialect: "mysql",
   },
   webHost: config.WEB_HOST,

@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=todo
+    ports:
+      - 3307:3306
+  todo-server:
+    build: .
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=root
+      - DB_PASS=1234
+      - DB_NAME=todo
+      - DB_PORT=3306
+      - PORT=3000
+      - WEB_HOST= http://localhost:3001
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysqldb
+    restart: on-failure

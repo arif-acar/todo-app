@@ -22,7 +22,7 @@ initialize().then(async () => {
 });
 
 app.get("/health", async (request, response) => {
-  request.status(200).send("App is working!");
+  response.status(200).send("App is working!");
 });
 
 app.use("/api", routes);

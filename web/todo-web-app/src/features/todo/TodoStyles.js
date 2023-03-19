@@ -3,7 +3,6 @@ import { ReactComponent as CheckMarkLogo } from "../../common/images/checkmark.s
 
 const ToDoWrapper = styled.div`
   width: 380px;
-  min-height: 367px;
   padding: 35px 30px;
   border-radius: 5px;
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);

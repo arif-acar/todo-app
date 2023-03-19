@@ -2,14 +2,17 @@ import React from "react";
 import { CheckboxWrapper, CheckboxLabel, CloseButton } from "./CheckboxStyle";
 
 export function Checkbox({
+  id,
   disabled,
   inputStyle,
   label,
   name,
   onChange,
+  onDelete,
   placeholder,
   readOnly,
   value,
+  checked,
 }) {
   return (
     <CheckboxWrapper>
@@ -18,16 +21,17 @@ export function Checkbox({
         data-testid={name}
         tabIndex={0}
         name={name}
-        onChange={onChange}
+        onChange={(event) => onChange(event.target.checked, id)}
         placeholder={placeholder}
         value={value}
         style={inputStyle}
         disabled={disabled}
         readOnly={readOnly}
         type="checkbox"
+        checked={checked}
       />
       <CheckboxLabel> {label}</CheckboxLabel>
-      <CloseButton></CloseButton>
+      <CloseButton onClick={() => onDelete(id)}></CloseButton>
     </CheckboxWrapper>
   );
 }

@@ -6,6 +6,7 @@ export function Input({
   inputStyle,
   name,
   onChange,
+  onKeyDown,
   placeholder,
   readOnly,
   type,
@@ -19,6 +20,7 @@ export function Input({
         tabIndex={0}
         name={name}
         onChange={onChange}
+        onKeyDown={onKeyDown}
         placeholder={placeholder}
         value={value}
         style={inputStyle}
